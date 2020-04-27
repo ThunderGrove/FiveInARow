@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="236.0" layoutY="95.0" minHeight="28.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="128.0" text="New game">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="236.0" layoutY="155.0" minHeight="28.0" minWidth="128.0" mnemonicParsing="false" text="Load game">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
