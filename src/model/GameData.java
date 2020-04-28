@@ -2,7 +2,7 @@ package model;
 
 public class GameData{
     private boolean turn=false;//player 1 is false,player 2 is true
-    private int [][] gameField={
+    private int[][]gameField={
             {0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0},
@@ -12,6 +12,23 @@ public class GameData{
             {0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0}
     };
+    private int id=-1;
+
+    public GameData(){
+
+    }
+
+    public GameData(boolean t){
+        turn=t;
+    }
+
+    public void setId(int id){
+        this.id=id;
+    }
+
+    public int getId(){
+        return id;
+    }
 
     public void setTurn(boolean t){
         turn=t;
@@ -30,8 +47,8 @@ public class GameData{
     }
 
     public void fillGameFieldFromString(String s){
-        String[] firstSplit=s.split(";");
-        String[][] secondSplit={
+        String[]firstSplit=s.split(";");
+        String[][]secondSplit={
                 firstSplit[0].split(","),
                 firstSplit[1].split(","),
                 firstSplit[2].split(","),
@@ -44,7 +61,7 @@ public class GameData{
 
         for(int ia=0;ia<8;ia++){
             for(int ib=0;ib<8;ib++){
-                gameField[ia][ib]= Integer.parseInt(secondSplit[ia][ib]);
+                gameField[ia][ib]=Integer.parseInt(secondSplit[ia][ib]);
             }
         }
     }
