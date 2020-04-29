@@ -3,14 +3,11 @@ package model;
 public class GameData{
     private boolean turn=false;//player 1 is false,player 2 is true
     private int[][]gameField={
-            {0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0}
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0}
     };
     private int id=-1;
 
@@ -53,14 +50,11 @@ public class GameData{
                 firstSplit[1].split(","),
                 firstSplit[2].split(","),
                 firstSplit[3].split(","),
-                firstSplit[4].split(","),
-                firstSplit[5].split(","),
-                firstSplit[6].split(","),
-                firstSplit[7].split(",")
+                firstSplit[4].split(",")
         };
 
-        for(int ia=0;ia<8;ia++){
-            for(int ib=0;ib<8;ib++){
+        for(int ia=0;ia<5;ia++){
+            for(int ib=0;ib<5;ib++){
                 gameField[ia][ib]=Integer.parseInt(secondSplit[ia][ib]);
             }
         }
@@ -69,8 +63,8 @@ public class GameData{
     public String getGameFieldAsText(){
         String returnString="";
 
-        for(int ia=0;ia<8;ia++){
-            for(int ib=0;ib<8;ib++){
+        for(int ia=0;ia<5;ia++){
+            for(int ib=0;ib<5;ib++){
                returnString+=gameField[ia][ib];
                if(ib<7){
                    returnString+=",";
