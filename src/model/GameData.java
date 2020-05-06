@@ -1,6 +1,12 @@
 package model;
 
+import javafx.scene.shape.Circle;
+
+import java.util.ArrayList;
+import java.util.Queue;
+
 public class GameData{
+    public static ArrayList<ArrayList<Circle>> gameFieldGUI = new ArrayList<ArrayList<Circle>>();
     private boolean turn=false;//player 1 is false,player 2 is true
     private int[][]gameField={
             {0,0,0,0,0},
@@ -66,11 +72,11 @@ public class GameData{
         for(int ia=0;ia<5;ia++){
             for(int ib=0;ib<5;ib++){
                returnString+=gameField[ia][ib];
-               if(ib<7){
+               if(ib<4){
                    returnString+=",";
                }
             }
-            if(ia<7){
+            if(ia<5){
                 returnString+=";";
             }
         }
@@ -80,5 +86,8 @@ public class GameData{
 
     public int getGameCell(int a,int b){
         return gameField[a][b];
+    }
+    public void setGameCell(int a,int b, int c){
+        gameField[a][b] = c;
     }
 }

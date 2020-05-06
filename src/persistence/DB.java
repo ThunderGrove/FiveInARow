@@ -27,7 +27,7 @@ public class DB{
     }
 
     public void createTables(){
-        if(!dbFile.exists()){
+        if(dbFile.exists() == false){
             String SavedGames="CREATE TABLE IF NOT EXISTS SavedGames (" +
                     "id integer PRIMARY KEY AUTOINCREMENT," +
                     "savedDate timestamp NOT NULL," +
@@ -49,7 +49,7 @@ public class DB{
     public ArrayList<GameData>getSavedGames(){
         ArrayList<GameData>temp=new ArrayList<GameData>();
 
-        if(!dbFile.exists()){
+        if(dbFile.exists()){
             String SavedGames="SELECT id,savedDate,turn FROM SavedGames";
 
             try(Connection conn=connect();
@@ -71,9 +71,8 @@ public class DB{
     public GameData getSavedGame(int id){
         GameData temp=new GameData();
 
-        if(!dbFile.exists()){
+        if(dbFile.exists()){
             String SavedGames="SELECT id,turn,gameField FROM SavedGames WHERE id="+id;
-
             try(Connection conn=connect();
                 PreparedStatement ps=conn.prepareStatement(SavedGames)){
                 ResultSet rs=ps.executeQuery();
@@ -82,6 +81,7 @@ public class DB{
                     temp.setId(rs.getInt("id"));
                     temp.setTurn(rs.getBoolean("turn"));
                     temp.fillGameFieldFromString(rs.getString("gameField"));
+
                 }
 
             }catch(SQLException e){
@@ -94,8 +94,8 @@ public class DB{
 
     public void saveGame(GameData gd){
         if(gd.getId()<0){
-            if(!dbFile.exists()){
-                String SavedGame="INSERT INTO SavedGames(savedDate,turn,gameField) VALUES(NOW(),?,?)";
+            if(dbFile.exists()){
+                String SavedGame="INSERT INTO SavedGames(savedDate,turn,gameField) VALUES(strftime('%s','now'),?,?)";
 
                 try(Connection conn=connect();
                     PreparedStatement ps=conn.prepareStatement(SavedGame)){
@@ -110,8 +110,8 @@ public class DB{
 
             }
         }else{
-            if(!dbFile.exists()){
-                String SavedGame="UPDATE SavedGames SET savedDate=NOW(),turn=?,gameField=? WHERE id=?";
+            if(dbFile.exists()){
+                String SavedGame="UPDATE SavedGames SET savedDate=strftime('%s','now'),turn=?,gameField=? WHERE id=?";
 
                 try(Connection conn=connect();
                     PreparedStatement ps=conn.prepareStatement(SavedGame)){
