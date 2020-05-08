@@ -1,17 +1,19 @@
 package ui;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.transform.Affine;
 import model.GameData;
 import persistence.DB;
 
 public class EventHandler {
+
+    int threatSekundCount, gameMinutCount;
 
     Game gameUI = new Game();
     GameData gameModel = new GameData();
@@ -21,15 +23,17 @@ public class EventHandler {
     private GridPane startMenu, gamePane, loadPane;
     @FXML
     private Pane gameField;
-    private Affine affine;
+    @FXML
+    public Label sekundCounts;
+    @FXML
+    public Label minutCountsLabel;
 
     @FXML
     public void startGame(ActionEvent event){
         startMenu.setVisible(false);
         gamePane.setVisible(true);
         gameUI.gameFill(gameField);
-        this.affine = new Affine();
-        this.affine.appendScale(400/5f,400/5f);
+
         //TODO Udvikling af code der generates spille fladen gøres evt fra en anden package
     }
 
@@ -106,6 +110,50 @@ public class EventHandler {
             }
 
         }
+
+    }
+    public void gameCount(){
+
+        Thread threadCounter = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Runnable update = new Runnable() {
+                    @Override
+                    public void run() {
+                        threadCount();
+                    }
+                };
+                while (true){
+                    try {
+                      Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Platform.runLater(update);
+                }
+
+            }
+        });
+        threadCounter.setDaemon(true);
+        threadCounter.start();
+
+    }
+    @FXML
+    public void threadCount(){
+        System.out.println("Hey!");
+        System.out.println(minutCountsLabel);
+        System.out.println(sekundCounts);
+        if (threatSekundCount==60){
+            threatSekundCount = 0;
+            sekundCounts.setText(String.valueOf(threatSekundCount));
+            gameMinutCount++;
+            minutCountsLabel.setText(String.valueOf(gameMinutCount));
+        }else{
+            threatSekundCount++;
+            sekundCounts.setText("String.valueOf(1)");
+        }
+
+
 
     }
 
