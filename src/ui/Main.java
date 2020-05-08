@@ -9,6 +9,7 @@ import persistence.DB;
 
 public class Main extends Application{
     DB persistance = new DB();
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("game.fxml"));
@@ -16,6 +17,7 @@ public class Main extends Application{
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
         persistance.createTables();
+
     }
 
     public static void main(String[] args) {
