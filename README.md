@@ -17,4 +17,6 @@ you run the game from src/ui/main.java or follow this [link.](https://github.com
 once you've opened the game press start to play.<br/>
 there are 2 colors, Red and Blue the players themselves decide which color they want.<br/>
 however Blue is player 1 while Red is player 2.<br/>
-![mainScreen](/images/mainScreen2.png)
+![mainScreen](/images/mainScreen2.png)<br/><br/>
+#### Credits:
+Spring In My Step - Silent Partner - [Youtube Audio Library](https://www.youtube.com/watch?v=siCmqvfw_1g)
