@@ -11,3 +11,8 @@ Decisions made:<br/>
 SQLite used for save/load feature.<br/>
 SQLite was chosen to store save data in SQL format without requiring connection to a database server.<br/>
 Updates of GUI elements without been triggered by players have to be executed in a separated thread.<br/>
+How To Play:<br/>
+you run the game from src/ui/main.java or follow this [link](https://github.com/ThunderGrove/FiveInARow/blob/master/src/ui/Main.java)<br/>
+once you've opened the game press start to play<br/>
+there are 2 colors, Red and Blue the players themselves decide which color they want.<br/>
+however Blue is player 1 while Red is player 2<br/>
