@@ -13,7 +13,7 @@ import persistence.DB;
 
 public class EventHandler {
 
-    int threatSekundCount, gameMinutCount;
+    int threadSekundCount, gameMinutCount;
 
     Game gameUI = new Game();
     GameData gameModel = new GameData();
@@ -143,13 +143,13 @@ public class EventHandler {
         System.out.println("Hey!");
         System.out.println(minutCountsLabel);
         System.out.println(sekundCounts);
-        if (threatSekundCount==60){
-            threatSekundCount = 0;
-            sekundCounts.setText(String.valueOf(threatSekundCount));
+        if (threadSekundCount == 60){
+            threadSekundCount = 0;
+            sekundCounts.setText(String.valueOf(threadSekundCount));
             gameMinutCount++;
             minutCountsLabel.setText(String.valueOf(gameMinutCount));
         }else{
-            threatSekundCount++;
+            threadSekundCount++;
             sekundCounts.setText("String.valueOf(1)");
         }
 
